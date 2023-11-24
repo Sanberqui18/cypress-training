@@ -9,7 +9,7 @@ jobs:
       - name: Checkout (Get the Repository)
         uses: actions/checkout@v2
 
-      - name: Setup
+      - name: Setup (prepare workflow to use Node v16)
         uses: actions/setup-node@v2
         with:
           node-version: 16
@@ -18,7 +18,7 @@ jobs:
       - name: Install (ci = clean install)
         run: npm ci
 
-      - name: Code style
+      - name: Code style (static test)
         run: npm run lint
 
       - name: UI E2E Tests
