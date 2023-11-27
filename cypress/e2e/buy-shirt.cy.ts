@@ -2,7 +2,7 @@
 
 import { LoginPage } from "../pages/index";
 
-const loginPage = new LoginPage;
+const loginPage = new LoginPage();
 
 describe("Buy a black t-shirt", () => {
   it("Then the t-shirt should be bought", () => {
