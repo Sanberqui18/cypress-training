@@ -1,13 +1,15 @@
 /// <reference types ="Cypress" />
 
+import { LoginPage } from "../pages/index";
+
+const loginPage = new LoginPage;
+
 describe("Buy a black t-shirt", () => {
   it("Then the t-shirt should be bought", () => {
 
-    cy.visit("https://www.saucedemo.com/");
+    loginPage.visitLoginPage();
 
-    cy.get("#user-name").type("standard_user");
-    cy.get("#password").type("secret_sauce");
-    cy.get("#login-button").click();
+    loginPage.signIn("standard_user", "secret_sauce");
 
     cy.get("#add-to-cart-sauce-labs-bolt-t-shirt").click();
 
