@@ -2,6 +2,9 @@
 
 import { LoginPage, ProductsContentPage } from "../pages/index";
 
+const productName = "Sauce Labs Backpack";
+const price = "$29.99";
+
 const loginPage = new LoginPage();
 const productPage = new ProductsContentPage();
 
@@ -19,12 +22,12 @@ describe("Buy a product workflow", () => {
 
       describe("And the user adds the Sauce Labs Backpack to the cart", () => {
         beforeEach(() => {
-          productPage.addItem();
+          productPage.addItem(productName);
         });
 
         it("Then the price and names for that product are correct", () => {
-          productPage.verifyTitle("Sauce Labs Backpack");
-          productPage.verifyPrice("$29.99");
+          productPage.verifyTitle(productName, "Sauce Labs Backpack");
+          productPage.verifyPrice(productName, price);
         });
 
         describe("And the user clicks on the shopping cart icon", () => {
@@ -44,15 +47,9 @@ describe("Buy a product workflow", () => {
             describe("And the user checks the summary and finish the order", () => {
               it("Then the data summary should be displayed", () => {
                 cy.get(".cart_quantity").should("have.text", 1);
-                cy.get(".inventory_item_name").should(
-                  "have.text",
-                  "Sauce Labs Backpack",
-                );
-                cy.get(".inventory_item_price").should("have.text", "$29.99");
-                cy.get(".summary_subtotal_label").should(
-                  "contain.text",
-                  "$29.99",
-                );
+                cy.get(".inventory_item_name").should("have.text", productName);
+                cy.get(".inventory_item_price").should("have.text", price);
+                cy.get(".summary_subtotal_label").should("contain.text", price);
                 cy.get(".summary_tax_label").should("contain.text", "$2.40");
                 cy.get(".summary_total_label").should("contain.text", "$32.39");
               });

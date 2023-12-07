@@ -16,7 +16,7 @@ module.exports = {
     "cypress/assertion-before-screenshot": "warn",
     "cypress/no-force": "warn",
     "no-unused-vars": "warn",
-    "require-jsdoc": "warn",
+    //"require-jsdoc": "warn",
     "max-len": ["error", { code: 125 }],
   },
 };
