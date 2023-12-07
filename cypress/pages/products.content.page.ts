@@ -1,38 +1,64 @@
+import { dataTestFormat } from "../support/utils";
 class ProductsContentPage {
   private shoppingBtn: string;
   private containerItems: string;
-  private addItemBackPack: string;
   private titleItem: string;
   private priceItem: string;
+  private productList: string;
+  private productContainer: string;
 
   constructor() {
     this.shoppingBtn = ".shopping_cart_link";
     this.containerItems =
       ":nth-child(2) > :nth-child(1) > #inventory_container";
-    this.addItemBackPack = '[data-test="add-to-cart-sauce-labs-backpack"]';
-    this.titleItem = "#item_4_title_link > .inventory_item_name";
-    this.priceItem =
-      ":nth-child(1) > .inventory_item_description > .pricebar > .inventory_item_price";
+    this.titleItem = ".inventory_item_name";
+    this.priceItem = ".inventory_item_price";
+    this.productList = ".inventory_list > *";
+    this.productContainer = ".inventory_item";
   }
 
-  public goToShoppingCart(): void {
-    cy.get(this.shoppingBtn).click();
+  private findProductByName(
+    productName: string,
+  ): Cypress.Chainable<JQuery<HTMLElement>> {
+    return cy.get(this.productList).contains(productName);
   }
 
-  public addItem(): void {
-    cy.get(this.addItemBackPack).click();
+  private getProductContainer(
+    productName: string,
+  ): Cypress.Chainable<JQuery<HTMLElement>> {
+    return this.findProductByName(productName).parentsUntil(
+      this.productContainer,
+    );
   }
 
-  public verifyTitle(messages: string): void {
-    cy.get(this.titleItem).should("have.text", messages);
-  }
-
-  public verifyPrice(messages: string): void {
-    cy.get(this.priceItem).should("have.text", messages);
-  }
-
-  public displayContainer(): void {
+  displayContainer(): void {
     cy.get(this.containerItems).should("be.visible");
+  }
+
+  addItem(productNane: string): void {
+    const dataTest = dataTestFormat(productNane);
+    const selector = `[data-test="add-to-cart-${dataTest}"]`;
+    cy.get(selector).click();
+  }
+
+  verifyTitle(productName: string, name: string): void {
+    this.getProductContainer(productName)
+      .find(this.titleItem)
+      .should("have.text", name);
+  }
+
+  verifyPrice(productName: string, price: string): void {
+    this.getProductContainer(productName)
+      .find(this.priceItem)
+      .should("have.text", price);
+  }
+
+  goToProductPage(productName: string): void {
+    this.findProductByName(productName).click();
+  }
+
+  goToShoppingCart(): void {
+    cy.get(this.shoppingBtn).click();
   }
 }
 
