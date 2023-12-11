@@ -35,8 +35,8 @@ class ProductsContentPage {
     cy.get(this.containerItems).should("be.visible");
   }
 
-  addItem(productNane: string): void {
-    const dataTest = dataTestFormat(productNane);
+  addItem(productName: string): void {
+    const dataTest = dataTestFormat(productName);
     const selector = `[data-test="add-to-cart-${dataTest}"]`;
     cy.get(selector).click();
   }
