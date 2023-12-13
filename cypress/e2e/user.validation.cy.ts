@@ -12,7 +12,7 @@ describe("Users login validation ", () => {
       loginPage.visitLoginPage();
     });
 
-    describe("And I log in using the Standard User", () => {
+    describe("When I log in using the Standard User", () => {
       it("Then I should be redirected to the main product page without errors", () => {
         cy.fixture("user.credentials").then((users: Users) => {
           loginPage.signIn(
@@ -24,7 +24,7 @@ describe("Users login validation ", () => {
         productPage.displayContainer();
       });
 
-      describe("When I try to log in using wrong credentials", () => {
+      describe("And I try to log in using wrong credentials", () => {
         it("Then I get an error message because the password is not correct", () => {
           cy.fixture("user.credentials").then((users: Users) => {
             loginPage.signIn(users.locked_out_user.username, "password");
