@@ -12,7 +12,7 @@ describe("Users login validation ", () => {
       loginPage.visitLoginPage();
     });
 
-    describe("When I log in using the Standard User", () => {
+    describe("And I log in using the Standard User", () => {
       it("Then I should be redirected to the main product page without errors", () => {
         cy.fixture("user.credentials").then((users: Users) => {
           loginPage.signIn(

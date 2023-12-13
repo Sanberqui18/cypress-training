@@ -1,23 +1,3 @@
-/* eslint-disable no-unused-vars */
-// /// <reference types="Cypress" />
-
-// import type Credentials from "../fixtures/user.credentials.json";
-
-// interface FixtureTypes {
-//   credentials: typeof Credentials;
-//   // Add other fixtures here
-// }
-
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       fixture<K extends keyof FixtureTypes>(
-//         fixtureName: K,
-//       ): Chainable<FixtureTypes[K]>;
-//     }
-//   }
-// }
-
 interface Credentials {
   username: string;
   password: string;
