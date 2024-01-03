@@ -23,7 +23,7 @@ describe("Filling Form", () => {
       cy.visit("https://demoqa.com/automation-practice-form");
     });
 
-    describe("When the user fills out all the form and click on the submit button", () => {
+    describe("When the user fills out all the form and clicks on the submit button", () => {
       beforeEach(() => {
         formPage.fillNames(
           personalInformation.name,
@@ -38,7 +38,8 @@ describe("Filling Form", () => {
         formPage.submitForm();
       });
 
-      it("Then the user is rediected to the confirmation page and the data is correct", () => {
+      it("Then the user should be redirected to the confirmation page and the displayed data should be correct", () => {
+        confirmationForm.getPopUp().should("exist");
         confirmationForm
           .getTitle()
           .should("have.text", "Thanks for submitting the form");
@@ -67,6 +68,7 @@ describe("Filling Form", () => {
         confirmationForm.getValueOf("State and City").should("be.empty");
 
         confirmationForm.closePopUp();
+        confirmationForm.getPopUp().should("not.exist");
       });
     });
   });

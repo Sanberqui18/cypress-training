@@ -45,13 +45,12 @@ class FormPage {
   }
 
   fillDOB(DOB: string): void {
-    cy.get(this.dateOfBirthInput).type(DOB);
+    cy.get(this.dateOfBirthInput).type(`{selectall}${DOB}`);
   }
 
   checkHobbies(hobbies: HoobbieList): void {
     for (let hobby of hobbies) {
       cy.get(this.hobbies)
-        //@ts-ignore
         .contains(hobby)
         .parent()
         .find('[type="checkbox"]')

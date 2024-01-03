@@ -18,7 +18,7 @@ type DateOfBirth = `${number} ${string} ${number}`;
 type Genders = "Male" | "Female" | "Other";
 
 type Hobbies = "Sports" | "Reading" | "Music";
-export type HoobbieList = [Hobbies?, Hobbies?, Hobbies?];
+export type HoobbieList = Hobbies[];
 
 export interface FormData {
   name: string;
