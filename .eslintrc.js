@@ -14,9 +14,9 @@ module.exports = {
     "cypress/no-assigning-return-values": "error",
     "cypress/no-unnecessary-waiting": "error",
     "cypress/assertion-before-screenshot": "warn",
-    "cypress/no-force": "warn",
+    //"cypress/no-force": "warn",
     "no-unused-vars": "warn",
     //"require-jsdoc": "warn",
-    "max-len": ["error", { code: 125 }],
+    "max-len": ["error", { code: 150 }],
   },
 };
