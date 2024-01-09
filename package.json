@@ -8,7 +8,7 @@
     "test": "cypress run --headless --browser chrome",
     "lint": "eslint ./cypress/e2e/**/*.ts",
     "lint:fix": "npm run lint -- --fix",
-    "pretest": "rm -rf cypress/reports",
+    "pretest": "rm -rf cypress/reports cypress/downloads",
     "combine:reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/report.json",
     "generate:reports": "marge cypress/reports/report.json -f report -o cypress/reports",
     "cypress:reports": "npm run test && npm run combine:reports && npm run generate:reports"
