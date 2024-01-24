@@ -7,7 +7,7 @@ const loginPage = new LoginPage();
 const productPage = new ProductsContentPage();
 
 describe("Users login validation ", () => {
-  describe("Given I go to the Sause Demo store", () => {
+  describe("Given I go to the Sauce Demo store", () => {
     beforeEach(() => {
       loginPage.visitLoginPage();
     });

@@ -7,3 +7,5 @@ export { ConfirmationForm } from "./confirmation.form";
 export { UploadPage } from "./upload.page";
 
 export { DownloadPage } from "./download.form";
+
+export { iFramePage } from "./iframe.page";
