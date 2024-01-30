@@ -29,7 +29,7 @@ jobs:
           command: npm run cypress:reports
 
       - name: Upload Mochawesome Report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: cypress-report
           path: cypress/reports/report.html
