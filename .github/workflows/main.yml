@@ -26,8 +26,7 @@ jobs:
         with:
           browser: chrome
           headed: true
-          command-prefix: npm run
-          command: cypress:reports
+          command: npm run cypress:reports
 
       - name: Upload Mochawesome Report
         uses: actions/upload-artifact@v2
